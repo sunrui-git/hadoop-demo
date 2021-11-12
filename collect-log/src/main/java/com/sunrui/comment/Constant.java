@@ -1,4 +1,4 @@
-package com.sunrui.common;
+package com.sunrui.comment;
 
 public class Constant {
     public static  final  String LOGS_DIR="LOGS.DIR";

@@ -1,6 +1,6 @@
 package com.sunrui.log;
 
-import com.sunrui.common.Constant;
+import com.sunrui.comment.Constant;
 import com.sunrui.utils.PropTool2;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;

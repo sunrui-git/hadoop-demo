@@ -1,4 +1,4 @@
-package com.sunrui.common.step2;
+package com.sunrui.comment.step2;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

@@ -1,4 +1,4 @@
-package com.sunrui.common.step2;
+package com.sunrui.comment.step2;
 
 import org.apache.hadoop.io.BytesWritable;
 import org.apache.hadoop.io.Text;
