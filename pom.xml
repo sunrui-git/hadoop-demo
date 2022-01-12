@@ -12,6 +12,7 @@
         <module>hdfs-demo</module>
         <module>collect-log</module>
         <module>map-reduce-demo</module>
+        <module>zk-demo</module>
     </modules>
     <dependencies>
         <dependency>
