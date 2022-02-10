@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>招聘网站</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <p>{{userId}}</p> <button id="switch" @click="switchUser">切换用户</button>
+
+    <table border="1" cellspacing="0" width="50%" align="center">
+        <tr>
+            <th>岗位</th>
+            <th>企业</th>
+            <th>操作</th>
+        </tr>
+        <tr v-for="(job, index) in jobs" align="center">
+            <td><a href="#" @click="logToKafka(index,'click')">{{job.title}}</a></td>
+            <td>{{job.company}}</td>
+            <td>
+                <button @click="logToKafka(index,'job_collect')">收藏</button>
+                <button @click="logToKafka(index,'cv_send')">投简历</button>
+                <button @click="logToKafka(index,'cv_upload')">上传简历</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            userId: "uid_1",
+            jobs: [{
+                "title": "大数据开发",
+                "company": "阿里",
+                "job_code": "job_01"
+            }, {
+                "title": "前端开发",
+                "company": "腾讯",
+                "job_code": "job_02"
+            }, {
+                "title": "Java开发",
+                "company": "字节",
+                "job_code": "job_02"
+            }]
+        },
+        methods: {
+            switchUser: function() {
+                // 随机生成从1～10的uid
+                this.userId = "uid_" + (Math.floor(Math.random() * 10) + 1);
+            },
+            logToKafka: function(index, action) {
+
+                var timeStamp = (new Date()).valueOf();
+                var data = {
+                    "user_id": this.userId,
+                    "act_time": timeStamp,
+                    "action": action,
+                    "job_code": this.jobs[index].job_code,
+                    "title": this.jobs[index].title
+                }
+
+                var url = "http://101.35.199.162/log.gif";
+
+                fetch(url, {
+                    body: JSON.stringify(data),
+                    method: 'POST'
+                })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+            }
+        }
+    })
+</script>
+
+</html>

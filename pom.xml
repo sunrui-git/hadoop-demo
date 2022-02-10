@@ -13,6 +13,7 @@
         <module>collect-log</module>
         <module>map-reduce-demo</module>
         <module>zk-demo</module>
+        <module>kafka-demo</module>
     </modules>
     <dependencies>
         <dependency>
